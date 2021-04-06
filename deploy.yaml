@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: #replaceProjectName#
+  namespace: #replace_k8s_nameSpace#
+  labels:
+    app: #replaceProjectName#
+spec:
+  selector:
+    app: #replaceProjectName#
+  type: NodePort
+  ports:
+    - name: httpport
+      port: 8000
+      targetPort: 8000
+      nodePort: #replaceExportPort#
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: #replaceProjectName#
+  namespace: #replace_k8s_nameSpace#
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: #replaceProjectName#
+  template:
+    metadata:
+      labels:
+        app: #replaceProjectName#
+    spec:
+      containers:
+        - name: node
+          #这里的imagesName会通过自动构建替换加上去
+          image: #replaceImageName#
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000

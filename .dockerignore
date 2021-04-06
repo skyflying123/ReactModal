@@ -1,0 +1,39 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# 依赖相关
+**/node_modules
+
+# 编译产出
+/build
+/dist
+
+# IDE
+.idea
+.vscode
+.history
+*.log
+
+# apple
+.DS_Store
+
+# yarn npm
+npm-debug.log*
+yarn-error.log
+
+# 测试
+/coverage
+
+# 备份
+*bak
+
+# mock
+functions/mock
+.temp/**
+
+# umi
+.umi
+.umi-production
+
+# screenshot
+screenshot
+.firebase
